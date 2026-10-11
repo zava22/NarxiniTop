@@ -1,0 +1,108 @@
+/* ==========================================================================
+   CONTACT PAGE (/contact) + footer "Contact us" button.
+   Desktop / general layout only. Phone rules for this page live in mobile.css.
+   Uses tokens.css variables only, so both themes work.
+   ========================================================================== */
+
+/* footer button */
+.nf-col .nf-contact { display: flex; width: fit-content; margin-top: 10px; }
+
+.ct { display: grid; gap: 22px; }
+.ct h1, .ct h2, .ct h3 { font-family: var(--font-display); }
+
+/* ---------- hero ---------- */
+.ct-hero { position: relative; overflow: hidden; isolation: isolate; border-radius: 28px; padding: clamp(24px, 4vw, 48px); }
+.ct-hero h1 { margin: 14px 0 10px; font-size: clamp(1.9rem, 4.4vw, 3rem); line-height: 1.08; letter-spacing: -.04em; }
+.ct-hero p { margin: 0; max-width: 680px; color: var(--muted); font-size: 1.05rem; line-height: 1.6; }
+.ct-chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 20px 0 0; }
+.ct-chips li { display: inline-flex; align-items: center; gap: 7px; padding: 7px 13px; border-radius: 999px; background: rgba(var(--accent-rgb), .1); border: 1px solid rgba(var(--accent-rgb), .2); color: var(--accent); font-weight: 600; font-size: .86rem; }
+
+/* ---------- form + side ---------- */
+.ct-grid { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 22px; align-items: start; }
+.ct-form { border-radius: 28px; padding: clamp(18px, 3vw, 34px); }
+.ct-form h2 { margin: 0 0 6px; font-size: 1.5rem; letter-spacing: -.03em; }
+.ct-lead { margin: 0 0 20px; color: var(--muted); line-height: 1.55; }
+
+/* signed-in: who the message is sent as */
+.ct-as { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 4px 14px; padding: 14px 16px; margin-bottom: 18px; border-radius: 18px; background: rgba(var(--accent-rgb), .08); border: 1px solid rgba(var(--accent-rgb), .22); }
+.ct-as > div { display: flex; flex-direction: column; min-width: 0; line-height: 1.35; }
+.ct-as small { color: var(--muted); font-size: .78rem; }
+.ct-as b { font-size: 1.02rem; overflow-wrap: anywhere; }
+.ct-as span { color: var(--muted); font-size: .9rem; overflow-wrap: anywhere; }
+.ct-as em { grid-column: 1 / -1; font-style: normal; color: var(--muted); font-size: .8rem; padding-top: 6px; border-top: 1px dashed rgba(var(--accent-rgb), .25); margin-top: 6px; }
+
+/* guest: name + e-mail */
+.ct-guest { margin-bottom: 8px; }
+.ct-guest-note { display: flex; gap: 10px; align-items: flex-start; margin: 0 0 14px; padding: 12px 14px; border-radius: 14px; background: rgba(var(--accent-rgb), .08); border: 1px solid rgba(var(--accent-rgb), .2); font-size: .9rem; line-height: 1.5; }
+.ct-guest-note .nt-icon { margin-top: 2px; color: var(--accent); }
+.ct-guest-login { display: inline-flex; align-items: center; gap: 6px; margin: 0 0 14px; font-size: .92rem; }
+.ct-guest .nt-input input { padding-right: 40px; background: rgba(var(--surface-rgb), .7); }
+
+/* honeypot */
+.ct-hp { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; opacity: 0; }
+
+/* the big message box */
+.ct-box label { display: block; margin-bottom: 8px; font-size: .88rem; font-weight: 700; color: var(--muted); }
+.ct-box textarea { display: block; width: 100%; min-height: 260px; resize: vertical; padding: 16px 18px; border-radius: 18px; border: 1.5px solid var(--border); background: rgba(var(--surface-rgb), .7); color: var(--text); font: inherit; font-size: 1rem; line-height: 1.6; transition: border-color .2s, box-shadow .2s, background .2s; }
+.ct-box textarea::placeholder { color: var(--muted); opacity: .75; }
+.ct-box textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 4px rgba(var(--accent-rgb), .16); }
+.ct-box.is-error textarea { border-color: var(--error); }
+.ct-meta { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; min-height: 1.5em; margin-top: 7px; font-size: .82rem; }
+.ct-err { color: var(--error); }
+.ct-count { margin-left: auto; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.ct-count.is-over { color: var(--error); font-weight: 700; }
+.ct-fail { display: flex; align-items: flex-start; gap: 10px; margin-top: 10px; padding: 12px 14px; border-radius: 14px; color: var(--error); background: rgba(255, 90, 80, .1); border: 1px solid rgba(255, 90, 80, .35); font-size: .92rem; line-height: 1.45; }
+.ct-fail .nt-icon { margin-top: 2px; }
+.ct-submit { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-top: 16px; }
+.ct-submit p { display: flex; gap: 8px; align-items: flex-start; margin: 0; max-width: 440px; color: var(--muted); font-size: .8rem; line-height: 1.5; }
+.ct-submit p .nt-icon { margin-top: 1px; flex: none; }
+.ct-send { min-width: 180px; padding: 13px 30px; font-size: 1rem; }
+
+/* sent */
+.ct-done { display: grid; justify-items: center; text-align: center; gap: 8px; padding: clamp(18px, 4vw, 44px) 8px; }
+.ct-done-ico { display: grid; place-items: center; width: 72px; height: 72px; border-radius: 50%; color: var(--price-best); background: var(--green-tint); box-shadow: 0 0 0 8px rgba(var(--green-rgb), .08); margin-bottom: 8px; }
+.ct-done h2 { margin: 0; font-size: 1.6rem; }
+.ct-done p { margin: 0; max-width: 460px; color: var(--muted); line-height: 1.6; overflow-wrap: anywhere; }
+.ct-done-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 14px; }
+
+/* side cards */
+.ct-side { display: grid; gap: 18px; position: sticky; top: 24px; }
+.ct-card { border-radius: 24px; padding: 20px 22px; }
+.ct-card h3 { display: flex; align-items: center; gap: 9px; margin: 0 0 14px; font-size: 1.02rem; letter-spacing: -.015em; }
+.ct-card h3 .nt-icon { color: var(--accent); }
+.ct-tips { list-style: none; counter-reset: tip; margin: 0; padding: 0; display: grid; gap: 10px; }
+.ct-tips li { counter-increment: tip; display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 10px; align-items: start; font-size: .92rem; line-height: 1.5; }
+.ct-tips li::before { content: counter(tip); display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: rgba(var(--accent-rgb), .14); color: var(--accent); font-size: .76rem; font-weight: 800; }
+.ct-info { margin: 0; display: grid; gap: 14px; }
+.ct-info dt { color: var(--muted); font-size: .74rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.ct-info dd { margin: 3px 0 0; font-weight: 600; font-size: .94rem; line-height: 1.45; overflow-wrap: anywhere; }
+.ct-info dd a { color: var(--accent); text-decoration: none; }
+.ct-info dd a:hover { text-decoration: underline; }
+
+/* when to write */
+.ct-head h2 { margin: 0; font-size: 1.5rem; letter-spacing: -.03em; }
+.ct-head p { margin: 6px 0 0; color: var(--muted); }
+.ct-when ul { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; list-style: none; margin: 16px 0 0; padding: 0; }
+.ct-when li { padding: 20px; border-radius: 22px; }
+.ct-ico { display: grid; place-items: center; width: 46px; height: 46px; margin-bottom: 12px; border-radius: 14px; background: rgba(var(--accent-rgb), .13); color: var(--accent); }
+.ct-when li:first-child .ct-ico { background: rgba(var(--pink-rgb), .14); color: var(--pink); }
+.ct-when h3 { margin: 0 0 6px; font-size: 1rem; letter-spacing: -.015em; }
+.ct-when li p { margin: 0; color: var(--muted); font-size: .9rem; line-height: 1.55; }
+
+/* faq */
+.ct-faq-list { margin-top: 14px; padding: 4px 22px; border-radius: 24px; }
+.ct-faq details { border-bottom: 1px solid var(--border); }
+.ct-faq details:last-child { border-bottom: 0; }
+.ct-faq summary { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 16px 0; cursor: pointer; list-style: none; font-weight: 600; line-height: 1.4; }
+.ct-faq summary::-webkit-details-marker { display: none; }
+.ct-faq summary .nt-icon { color: var(--accent); transition: transform .25s; }
+.ct-faq details[open] summary .nt-icon { transform: rotate(180deg); }
+.ct-faq details p { margin: 0 0 16px; color: var(--muted); line-height: 1.65; }
+
+@media (max-width: 1100px) {
+  .ct-grid { grid-template-columns: minmax(0, 1fr) 320px; }
+  .ct-when ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ct-faq summary .nt-icon, .ct-box textarea { transition: none; }
+}

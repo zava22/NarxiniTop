@@ -1,0 +1,128 @@
+/* ==========================================================================
+   CARDS + BANNERS REFRESH
+   1. Card outlines: brown in the light theme, white in the dark theme.
+   2. Product cards: rounder, softer, "≈ 6,900 UZS / kg" with
+      "7 soat oldin yangilandi" stacked underneath instead of beside it.
+   3. Stronger banners (dot pattern, glow, deeper shadows).
+   Loaded after the older style files, before mobile.css.
+   ========================================================================== */
+
+:root,
+html[data-theme="light"] {
+  --card-line: rgba(var(--accent-rgb), .42);
+  --card-line-hover: rgba(var(--accent-rgb), .8);
+  --card-glow: rgba(var(--accent-rgb), .28);
+}
+html[data-theme="dark"] {
+  --card-line: rgba(255, 255, 255, .22);
+  --card-line-hover: rgba(255, 255, 255, .55);
+  --card-glow: rgba(255, 255, 255, .12);
+}
+
+/* ---------------------------------------------------------------- 1+2. product cards */
+html .pc {
+  gap: 10px;
+  padding: 10px 10px 12px;
+  border-radius: 24px;
+  border: 1.5px solid var(--card-line);
+  box-shadow: 0 10px 26px -18px var(--card-glow), var(--shadow-sm);
+  transition: box-shadow .3s ease, border-color .3s ease, background .3s ease;
+}
+html .pc:hover { border-color: var(--card-line-hover); box-shadow: 0 22px 40px -22px var(--card-glow), var(--shadow-md); }
+html[data-theme="light"] .pc { background: linear-gradient(180deg, #ffffff 0%, #fdf8f3 100%); }
+
+html .pc-img { border-radius: 18px; box-shadow: inset 0 0 0 1px var(--plate-ring), inset 0 -18px 30px -24px rgba(var(--accent-rgb), .35); }
+html .pc-link { gap: 10px; }
+html .pc-title { font-size: 1rem; letter-spacing: -.025em; margin: 0 6px; }
+html .pc-meta { margin: -4px 6px 0; }
+html .pc-cat { padding: 3px 9px; border-radius: 999px; background: rgba(var(--accent-rgb), .1); color: var(--accent); }
+
+html .pc-offers { gap: 6px; }
+html .pc-offers li { border-radius: 14px; min-height: 40px; padding: 5px 12px 5px 8px; border-color: rgba(var(--accent-rgb), .2); background: rgba(var(--accent-rgb), .045); }
+html[data-theme="dark"] .pc-offers li { border-color: rgba(255, 255, 255, .12); background: rgba(255, 255, 255, .03); }
+html .pc-offers li.is-best { background: var(--green-tint); border-color: rgba(var(--green-rgb), .5); }
+html .pc-price { font-size: .95rem; }
+
+/* note block: unit price on the first line, freshness underneath */
+html .pc-note.pc-note { flex-direction: column; align-items: flex-start; flex-wrap: nowrap; gap: 3px; margin: 0 6px; font-size: .76rem; }
+html .pc-note.pc-note > * { margin-left: 0; }
+html .pc-note.pc-note > *::before { content: none; margin: 0; }
+html .pc-note.pc-note .nt-unitprice { font-size: .82rem; font-weight: 700; opacity: .9; }
+html .pc-note.pc-note > .nt-fresh { display: inline-flex; align-items: center; gap: 6px; font-size: .72rem; color: var(--muted); }
+html .pc-note.pc-note > .nt-fresh::before { content: ""; width: 6px; height: 6px; margin: 0; border-radius: 50%; background: var(--success); box-shadow: 0 0 0 3px rgba(var(--green-rgb), .18); }
+html .pc-note.pc-note > .nt-fresh.is-stale::before { background: var(--warning); box-shadow: 0 0 0 3px rgba(240, 180, 92, .2); }
+
+html .pc-add { height: 42px; font-size: .9rem; box-shadow: 0 10px 20px -10px rgba(47, 143, 91, .6); }
+html .pc-step { height: 42px; }
+html .pc-step button { width: 36px; height: 36px; }
+html .pc-step { grid-template-columns: 36px minmax(0, 1fr) 36px; }
+html .pc-heart { border-color: var(--card-line); }
+
+/* phones keep a tighter version */
+@media (max-width: 640px) {
+  html .pc { padding: 8px 8px 10px; border-radius: 20px; }
+  html .pc-title { font-size: .86rem; margin: 0 3px; }
+  html .pc-note.pc-note { margin: 0 3px; font-size: .68rem; }
+  html .pc-note.pc-note .nt-unitprice { font-size: .72rem; }
+  html .pc-add, html .pc-step { height: 38px; }
+  html .pc-step { grid-template-columns: 32px minmax(0, 1fr) 32px; }
+  html .pc-step button { width: 32px; height: 32px; }
+}
+
+/* ---------------------------------------------------------------- 3. stronger banners */
+:root {
+  --banner-bg:
+    radial-gradient(760px 420px at 96% -12%, rgba(255, 122, 166, .42), transparent 62%),
+    radial-gradient(640px 380px at -6% 112%, rgba(224, 170, 124, .38), transparent 62%),
+    linear-gradient(135deg, #25150d 0%, #43271a 52%, #744630 100%);
+  --banner-dots: radial-gradient(rgba(255, 235, 220, .12) 1px, transparent 1.6px);
+  --banner-shadow: 0 46px 90px -42px rgba(78, 42, 22, .85), 0 18px 40px -22px rgba(232, 82, 127, .4), inset 0 1px 0 rgba(255, 235, 220, .28), inset 0 -60px 90px -70px rgba(255, 122, 166, .3);
+}
+html[data-theme="dark"] { --banner-shadow: 0 46px 90px -40px rgba(0, 0, 0, .95), 0 0 60px -28px rgba(255, 122, 166, .4), inset 0 1px 0 rgba(255, 235, 220, .2), inset 0 -60px 90px -70px rgba(255, 122, 166, .25); }
+
+/* main home banner (guest + signed-in) */
+html[data-theme] .nt-hero.nt-spot,
+html[data-theme] .nt-hero.is-guest.nt-spot {
+  background-color: #25150d;
+  background-image:
+    var(--banner-dots),
+    radial-gradient(520px circle at var(--mx, 72%) var(--my, 20%), rgba(255, 214, 180, .3), transparent 46%),
+    radial-gradient(760px 420px at 96% -12%, rgba(255, 122, 166, .42), transparent 62%),
+    radial-gradient(640px 380px at -6% 112%, rgba(224, 170, 124, .38), transparent 62%),
+    linear-gradient(135deg, #25150d 0%, #43271a 52%, #744630 100%);
+  background-size: 24px 24px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+}
+html[data-theme] .nt-hero,
+html[data-theme] .nt-hero.is-guest { box-shadow: var(--banner-shadow); border-color: rgba(255, 225, 200, .28); }
+html[data-theme] .nt-hero h1 { text-shadow: 0 2px 36px rgba(255, 122, 166, .28), 0 2px 30px rgba(0, 0, 0, .3); }
+html[data-theme] .nt-hero-orb-a { opacity: .45; }
+html[data-theme] .nt-hero-orb-b { opacity: .36; }
+html[data-theme] .nt-hero .nt-eyebrow { -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); box-shadow: inset 0 0 0 1px rgba(255, 232, 214, .3), 0 8px 22px -10px rgba(255, 122, 166, .55); }
+html[data-theme] .nt-hero .nt-stats li { background: linear-gradient(160deg, rgba(255, 255, 255, .14), rgba(255, 255, 255, .04)); box-shadow: inset 0 0 0 1px rgba(255, 232, 214, .24), 0 12px 26px -16px rgba(0, 0, 0, .7); transition: transform .25s, box-shadow .25s; }
+html[data-theme] .nt-hero .nt-stats li:hover { transform: translateY(-3px); box-shadow: inset 0 0 0 1px rgba(255, 232, 214, .45), 0 18px 30px -14px rgba(0, 0, 0, .75); }
+html[data-theme] .nt-float-panel { box-shadow: 0 36px 70px -26px rgba(0, 0, 0, .7), 0 0 0 1px rgba(255, 232, 214, .26), 0 0 50px -18px rgba(255, 122, 166, .5); }
+
+/* other banners */
+html[data-theme] .nt-show-cta,
+html[data-theme] .nc-hero,
+html[data-theme] .nf-card { box-shadow: var(--banner-shadow); }
+html[data-theme] .adm-hero { box-shadow: var(--banner-shadow); border: 1px solid rgba(255, 225, 200, .24); }
+html[data-theme] .nt-show { border: 1.5px solid var(--card-line); }
+
+/* contact page banner: same dark banner look */
+html[data-theme] .ct-hero.nt-glass {
+  background-color: #25150d;
+  background-image: var(--banner-dots), var(--banner-bg);
+  background-size: 24px 24px, 100% 100%;
+  border: 1px solid rgba(255, 225, 200, .28);
+  box-shadow: var(--banner-shadow);
+  -webkit-backdrop-filter: none; backdrop-filter: none;
+}
+html[data-theme] .ct-hero h1 { color: #fff7ef; text-shadow: 0 2px 36px rgba(255, 122, 166, .28); }
+html[data-theme] .ct-hero p { color: #e8d6c6; }
+html[data-theme] .ct-hero .nt-eyebrow { background: rgba(255, 255, 255, .1); color: #ffe6d0; box-shadow: inset 0 0 0 1px rgba(255, 232, 214, .3); }
+html[data-theme] .ct-chips li { background: rgba(255, 255, 255, .1); border-color: rgba(255, 232, 214, .26); color: #ffe6d0; }
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-theme] .nt-hero .nt-stats li { transition: none; }
+}

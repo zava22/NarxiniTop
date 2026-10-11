@@ -1,0 +1,324 @@
+[
+  {
+    "id": 1,
+    "slug": "fanta-15l",
+    "name": "Fanta 1.5L",
+    "category": "Ichimliklar",
+    "unit": "1.5 L",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/f/fb/Fanta_1500ml.jpg",
+    "description": "Fanta apelsin ta'mli gazlangan ichimlik.",
+    "prices": [
+      { "store": "Korzinka", "price": 12490 },
+      { "store": "Havas", "price": 13490 },
+      { "store": "Makro", "price": 13950 }
+    ]
+  },
+  {
+    "id": 2,
+    "slug": "sprite-15l",
+    "name": "Sprite 1.5L",
+    "category": "Ichimliklar",
+    "unit": "1.5 L",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/a/ac/Sprite_bottle.JPG",
+    "description": "Sprite limon va laym ta'mli gazlangan ichimlik.",
+    "prices": [
+      { "store": "Korzinka", "price": 12450 },
+      { "store": "Havas", "price": 13490 },
+      { "store": "Makro", "price": 13950 }
+    ]
+  },
+  {
+    "id": 3,
+    "slug": "lays-140g",
+    "name": "Lay's 140g",
+    "category": "Sneklar",
+    "unit": "140 g",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/6/69/Potato-Chips.jpg",
+    "description": "Kartoshkadan tayyorlangan Lay's chipslari.",
+    "prices": [
+      { "store": "Korzinka", "price": 19990 },
+      { "store": "Makro", "price": 21990 },
+      { "store": "Havas", "price": 23990 }
+    ]
+  },
+  {
+    "id": 4,
+    "slug": "lays-70g",
+    "name": "Lay's 70g",
+    "category": "Sneklar",
+    "unit": "70 g",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/6/61/Lays.jpg",
+    "description": "Lay's kartoshka chipslari.",
+    "prices": [
+      { "store": "Korzinka", "price": 11990 },
+      { "store": "Makro", "price": 12490 },
+      { "store": "Havas", "price": 12990 }
+    ]
+  },
+  {
+    "id": 5,
+    "slug": "coca-cola-15l",
+    "name": "Coca-Cola 1.5L",
+    "category": "Ichimliklar",
+    "unit": "1.5 L",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/a/af/Coca-cola_bottle.jpg",
+    "description": "Coca-Cola klassik gazlangan ichimligi.",
+    "prices": [
+      { "store": "Korzinka", "price": 12490 },
+      { "store": "Havas", "price": 13490 },
+      { "store": "Makro", "price": 13990 }
+    ]
+  },
+  {
+    "id": 6,
+    "slug": "sharbat-bliss-1l",
+    "name": "Sharbat Bliss 1L",
+    "category": "Ichimliklar",
+    "unit": "1 L",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Orange_juice.jpg",
+    "description": "Bliss mevali sharbat.",
+    "prices": [
+      { "store": "Korzinka", "price": 10990 },
+      { "store": "Makro", "price": 11290 },
+      { "store": "Havas", "price": 12490 }
+    ]
+  },
+  {
+    "id": 7,
+    "slug": "tic-tac-20g",
+    "name": "Tic-Tac 20g",
+    "category": "Shirinliklar",
+    "unit": "20 g",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/0/08/Mint_Tic_Tacs.jpg",
+    "description": "Tic-Tac yalpizli draje.",
+    "prices": [
+      { "store": "Makro", "price": 9490 },
+      { "store": "Korzinka", "price": 9990 },
+      { "store": "Havas", "price": 10490 }
+    ]
+  },
+  {
+    "id": 8,
+    "slug": "banan-1kg",
+    "name": "Banan 1kg",
+    "category": "Mevalar",
+    "unit": "1 kg",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/a/a4/Banana_image.jpg",
+    "description": "Yangi banan.",
+    "prices": [
+      { "store": "Korzinka", "price": 18990 },
+      { "store": "Havas", "price": 19990 },
+      { "store": "Makro", "price": 20990 }
+    ]
+  },
+  {
+    "id": 9,
+    "slug": "kartoshka-1kg",
+    "name": "Kartoshka 1kg",
+    "category": "Sabzavotlar",
+    "unit": "1 kg",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/f/f3/Potatoes.jpg",
+    "description": "Yangi kartoshka.",
+    "prices": [
+      { "store": "Makro", "price": 6900 },
+      { "store": "Havas", "price": 7450 },
+      { "store": "Korzinka", "price": 7990 }
+    ]
+  },
+  {
+    "id": 10,
+    "slug": "piyoz-1kg",
+    "name": "Piyoz 1kg",
+    "category": "Sabzavotlar",
+    "unit": "1 kg",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/9/93/Onion.jpg",
+    "description": "Yangi piyoz.",
+    "prices": [
+      { "store": "Makro", "price": 8000 },
+      { "store": "Havas", "price": 8500 },
+      { "store": "Korzinka", "price": 8990 }
+    ]
+  },
+  {
+    "id": 11,
+    "slug": "tovuq-filesi-1kg",
+    "name": "Tovuq filesi 1kg",
+    "category": "Go'sht",
+    "unit": "1 kg",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/d/db/CHICKEN_BREAST.jpg",
+    "description": "Yangi tovuq filesi.",
+    "prices": [
+      { "store": "Makro", "price": 89000 },
+      { "store": "Korzinka", "price": 94000 },
+      { "store": "Havas", "price": 99000 }
+    ]
+  },
+  {
+    "id": 12,
+    "slug": "tovuq-soni-1kg",
+    "name": "Tovuq soni 1kg",
+    "category": "Go'sht",
+    "unit": "1 kg",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/7/76/Packed_chicken_thighs.jpg",
+    "description": "Tovuq son go'shti.",
+    "prices": [
+      { "store": "Korzinka", "price": 39000 },
+      { "store": "Makro", "price": 42000 },
+      { "store": "Havas", "price": 44000 }
+    ]
+  },
+  {
+    "id": 13,
+    "slug": "tovuq-qanoti-1kg",
+    "name": "Tovuq qanoti 1kg",
+    "category": "Go'sht",
+    "unit": "1 kg",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/b/bf/Wing_of_Chicken.JPG",
+    "description": "Tovuq qanotlari.",
+    "prices": [
+      { "store": "Korzinka", "price": 38000 },
+      { "store": "Makro", "price": 41000 },
+      { "store": "Havas", "price": 43000 }
+    ]
+  },
+  {
+    "id": 14,
+    "slug": "tarvuz-1kg",
+    "name": "Tarvuz 1kg",
+    "category": "Mevalar",
+    "unit": "1 kg",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Watermelon.jpg",
+    "description": "Shirin va yangi tarvuz.",
+    "prices": [
+      { "store": "Havas", "price": 6900 },
+      { "store": "Korzinka", "price": 7900 },
+      { "store": "Makro", "price": 9450 }
+    ]
+  },
+  {
+    "id": 15,
+    "slug": "gilos-1kg",
+    "name": "Gilos 1kg",
+    "category": "Mevalar",
+    "unit": "1 kg",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/f/fe/Cherry_Fruit.jpg",
+    "description": "Yangi gilos.",
+    "prices": [
+      { "store": "Havas", "price": 49000 },
+      { "store": "Makro", "price": 59000 },
+      { "store": "Korzinka", "price": 64000 }
+    ]
+  },
+  {
+    "id": 16,
+    "slug": "alpen-gold-85g",
+    "name": "Alpen Gold 85g",
+    "category": "Shirinliklar",
+    "unit": "85 g",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/e/ea/Alpen_gold_assorted.jpg",
+    "description": "Alpen Gold shokoladi.",
+    "prices": [
+      { "store": "Makro", "price": 12990 },
+      { "store": "Korzinka", "price": 13990 },
+      { "store": "Havas", "price": 14990 }
+    ]
+  },
+  {
+    "id": 17,
+    "slug": "non-buhanka-1d",
+    "name": "Non Buhanka 1d",
+    "category": "Non mahsulotlari",
+    "unit": "1 dona",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/0/0c/Bread_loaf.jpg",
+    "description": "Yangi non.",
+    "prices": [
+      { "store": "Korzinka", "price": 3000 },
+      { "store": "Makro", "price": 3500 },
+      { "store": "Havas", "price": 3700 }
+    ]
+  },
+  {
+    "id": 18,
+    "slug": "qurt-ermak-30g",
+    "name": "Qurt Ermak 30g",
+    "category": "Sneklar",
+    "unit": "30 g",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/3/39/Potatoes_Chips.jpg",
+    "description": "Ermak qurt mahsuloti.",
+    "prices": [
+      { "store": "Makro", "price": 6950 },
+      { "store": "Korzinka", "price": 7450 },
+      { "store": "Havas", "price": 7500 }
+    ]
+  },
+  {
+    "id": 19,
+    "slug": "pepsi-15l",
+    "name": "Pepsi 1.5L",
+    "category": "Ichimliklar",
+    "unit": "1.5 L",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Pepsi_bottle.JPG",
+    "description": "Pepsi gazlangan ichimligi.",
+    "prices": [
+      { "store": "Korzinka", "price": 12490 },
+      { "store": "Havas", "price": 12490 },
+      { "store": "Makro", "price": 12990 }
+    ]
+  },
+  {
+    "id": 20,
+    "slug": "mol-qiyma-1kg",
+    "name": "Mol Qiyma 1kg",
+    "category": "Go'sht",
+    "unit": "1 kg",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Ground_Beef.jpg",
+    "description": "Mol go'shtidan tayyorlangan qiyma.",
+    "prices": [
+      { "store": "Korzinka", "price": 84500 },
+      { "store": "Makro", "price": 89900 },
+      { "store": "Havas", "price": 92000 }
+    ]
+  },
+  {
+    "id": 21,
+    "slug": "bodring-1kg",
+    "name": "Bodring 1kg",
+    "category": "Sabzavotlar",
+    "unit": "1 kg",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Cucumber.jpg",
+    "description": "Yangi bodring.",
+    "prices": [
+      { "store": "Havas", "price": 8000 },
+      { "store": "Korzinka", "price": 8500 },
+      { "store": "Makro", "price": 9000 }
+    ]
+  },
+  {
+    "id": 22,
+    "slug": "flint-100g",
+    "name": "Flint 100g",
+    "category": "Sneklar",
+    "unit": "100 g",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/69/69/Potato-Chips.jpg",
+    "description": "Flint krutonlari.",
+    "prices": [
+      { "store": "Havas", "price": 8990 },
+      { "store": "Korzinka", "price": 9490 },
+      { "store": "Makro", "price": 9990 }
+    ]
+  },
+  {
+    "id": 23,
+    "slug": "sut-purenmilk-1l",
+    "name": "Sut Purenmilk 1L",
+    "category": "Sut mahsulotlari",
+    "unit": "1 L",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/0/01/Milk-bottle.jpg",
+    "description": "Purenmilk sut mahsuloti.",
+    "prices": [
+      { "store": "Havas", "price": 14900 },
+      { "store": "Korzinka", "price": 15400 },
+      { "store": "Makro", "price": 15900 }
+    ]
+  }
+]

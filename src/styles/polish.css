@@ -1,0 +1,55 @@
+/* ==========================================================================
+   POLISH — site-wide refinements on top of the existing design system.
+   Tokens only (no hardcoded colours). Loaded after revamp/contact, before mobile.
+   ========================================================================== */
+
+html { scroll-behavior: smooth; }
+body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+::selection { background: rgba(var(--accent-rgb), .25); }
+
+/* focus: one consistent, visible ring */
+:where(a, button, input, select, textarea, [tabindex]):focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 10px; }
+
+/* scrollbars match the brand */
+* { scrollbar-width: thin; scrollbar-color: rgba(var(--accent-rgb), .4) transparent; }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: rgba(var(--accent-rgb), .35); border-radius: 10px; border: 2px solid transparent; background-clip: padding-box; }
+::-webkit-scrollbar-thumb:hover { background: rgba(var(--accent-rgb), .6); background-clip: padding-box; }
+
+/* glass surfaces: softer depth, smoother lift */
+.nt-glass { transition: box-shadow .3s ease, border-color .3s ease, transform .3s ease; }
+.nt-section { margin-top: clamp(26px, 4vw, 44px); }
+.nt-section-head h2 { letter-spacing: -.035em; }
+.nt-section-glass { border-radius: 30px; }
+
+/* buttons */
+.nt-btn { transition: transform .18s ease, box-shadow .25s ease, background .2s, color .2s, border-color .2s; }
+.nt-btn:hover { transform: translateY(-2px); }
+.nt-btn:active { transform: translateY(0) scale(.98); }
+.nt-btn-primary { box-shadow: 0 8px 22px rgba(var(--accent-rgb), .28); }
+.nt-btn-primary:hover { box-shadow: 0 12px 30px rgba(var(--accent-rgb), .38); }
+
+/* inputs */
+:where(input[type="text"], input[type="search"], input[type="email"], input[type="password"], input[type="tel"], textarea, select) { transition: border-color .2s, box-shadow .2s, background .2s; }
+:where(input[type="text"], input[type="search"], input[type="email"], input[type="password"], input[type="tel"], textarea, select):focus { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(var(--accent-rgb), .14); }
+
+/* navbar links */
+.nt-nav a { transition: color .2s, background .2s, transform .2s; }
+
+/* popup */
+.cm { box-shadow: 0 30px 80px rgba(var(--ink-rgb), .3); }
+.cm-item { transition: background .2s, transform .2s; }
+.cm-item:hover { background: rgba(var(--surface-rgb), .95); transform: translateX(2px); }
+.cm-col { transition: box-shadow .25s, border-color .25s; }
+.cm-col:hover { border-color: rgba(var(--accent-rgb), .4); box-shadow: var(--shadow-sm); }
+
+/* images fade in instead of popping */
+img[loading="lazy"] { animation: nt-img-in .5s ease both; }
+@keyframes nt-img-in { from { opacity: 0; } to { opacity: 1; } }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .nt-btn, .cm-item { transition: none; }
+  .nt-btn:hover, .cm-item:hover { transform: none; }
+  img[loading="lazy"] { animation: none; }
+}

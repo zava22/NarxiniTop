@@ -1,0 +1,118 @@
+[
+  {
+    "id": "havas-h351",
+    "chain": "Havas",
+    "name": "H351",
+    "address": "Yakkasaroy tumani, Kichik xalqa yo‘li 43-uy",
+    "district": "yakkasaroy",
+    "lat": 41.2657778,
+    "lng": 69.2461111,
+    "hours": "08:00-22:00",
+    "phone": "+998712059595",
+    "source": "https://havasfood.uz/ru/markets/",
+    "verifiedAt": "2026-10-10",
+    "mapsUrl": "https://maps.app.goo.gl/UBuHyFv1FfZQrA2y7"
+  },
+  {
+    "id": "havas-h350",
+    "chain": "Havas",
+    "name": "H350",
+    "address": "Toshkent viloyati, Yuqori Chirchiq tumani, Jumabozor, Muhtasham ko‘chasi 62-uy",
+    "lat": 41.2322,
+    "lng": 69.507945,
+    "hours": "08:00-22:00",
+    "phone": "+998712059595",
+    "source": "https://havasfood.uz/ru/markets/",
+    "verifiedAt": "2026-10-10",
+    "mapsUrl": "https://maps.app.goo.gl/VoLhBesh1AjyPLke9"
+  },
+  {
+    "id": "havas-h349",
+    "chain": "Havas",
+    "name": "H349",
+    "address": "Mirobod tumani, Munis ko‘chasi 10-uy",
+    "district": "mirobod",
+    "hours": "08:00-22:00",
+    "phone": "+998712059595",
+    "source": "https://havasfood.uz/ru/markets/",
+    "verifiedAt": "2026-10-10",
+    "mapsUrl": "https://maps.app.goo.gl/RCeGj78YYwRowEKNA"
+  },
+  {
+    "id": "havas-h348",
+    "chain": "Havas",
+    "name": "H348",
+    "address": "Uchtepa tumani, 17-kvartal, Tong ko‘chasi 2-uy",
+    "district": "uchtepa",
+    "hours": "08:00-22:00",
+    "phone": "+998712059595",
+    "source": "https://havasfood.uz/ru/markets/",
+    "verifiedAt": "2026-10-10",
+    "mapsUrl": "https://maps.app.goo.gl/o6KoaFm4yQVcp6JWA"
+  },
+  {
+    "id": "havas-h347",
+    "chain": "Havas",
+    "name": "H347",
+    "address": "Toshkent viloyati, Sirdaryo tumani, Registon",
+    "hours": "08:00-22:00",
+    "phone": "+998712059595",
+    "source": "https://havasfood.uz/ru/markets/",
+    "verifiedAt": "2026-10-10",
+    "mapsUrl": "https://maps.app.goo.gl/JKeQzF3Uf6zmPqtz8"
+  },
+  {
+    "id": "havas-h346",
+    "chain": "Havas",
+    "name": "H346",
+    "address": "Yakkasaroy tumani, Qushbegi-3, Grand Capital",
+    "district": "yakkasaroy",
+    "hours": "08:00-22:00",
+    "phone": "+998712059595",
+    "source": "https://havasfood.uz/ru/markets/",
+    "verifiedAt": "2026-10-10",
+    "mapsUrl": "https://maps.app.goo.gl/ndyo3ZKTTDBA23AF8"
+  },
+  {
+    "id": "makro-178141393200",
+    "chain": "Makro",
+    "name": "Makro",
+    "address": "Nukus ko‘chasi, 83A",
+    "source": "https://yandex.uz/maps/10335/tashkent/chain/makro/220824235256/",
+    "verifiedAt": "2026-10-10"
+  },
+  {
+    "id": "makro-16634355146",
+    "chain": "Makro",
+    "name": "Makro",
+    "address": "Yashnobod tumani, Fidoyilar mahalla fuqarolar yig‘ini",
+    "district": "yashnobod",
+    "source": "https://yandex.uz/maps/10335/tashkent/chain/makro/220824235256/",
+    "verifiedAt": "2026-10-10"
+  },
+  {
+    "id": "makro-65715342622",
+    "chain": "Makro",
+    "name": "Makro",
+    "address": "Yashnobod tumani, Mahtumquli ko‘chasi, 80/1A",
+    "district": "yashnobod",
+    "source": "https://yandex.uz/maps/10335/tashkent/chain/makro/220824235256/",
+    "verifiedAt": "2026-10-10"
+  },
+  {
+    "id": "makro-58506607901",
+    "chain": "Makro",
+    "name": "Makro",
+    "address": "Yahyo G‘ulomov ko‘chasi, 38",
+    "source": "https://yandex.uz/maps/10335/tashkent/chain/makro/220824235256/",
+    "verifiedAt": "2026-10-10"
+  },
+  {
+    "id": "makro-131354019152",
+    "chain": "Makro",
+    "name": "Makro",
+    "address": "Nodira ko‘chasi, 4, 1-qavat",
+    "source": "https://yandex.uz/maps/10335/tashkent/chain/makro/220824235256/",
+    "verifiedAt": "2026-10-10"
+  }
+]

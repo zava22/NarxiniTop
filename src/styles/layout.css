@@ -1,0 +1,64 @@
+/* ==========================================================================
+   LAYOUT LAYER — keeps every page at a comfortable "80% zoom" look at 100%.
+   Content is centred in a narrower column with breathing room on both sides,
+   and the banners are more compact. Loaded after all other desktop styles and
+   before mobile.css, so phones are not affected (desktop-only media query).
+   Tweak --nt-col to make the whole site wider / narrower.
+   ========================================================================== */
+:root { --nt-col: 1260px; --nt-gutter: 28px; }
+
+@media (min-width: 1100px) {
+  /* one shared column for navbar, pages, footer, admin, cart */
+  html body .nt-main,
+  html body .nt-main.is-wide,
+  html body .nt-main.is-fixed { width: min(var(--nt-col), calc(100% - var(--nt-gutter) * 2)); max-width: none; margin-inline: auto; padding-inline: 0; }
+  html body .nt-nav { width: min(var(--nt-col), calc(100% - var(--nt-gutter) * 2)); margin-top: 12px; }
+  html body .nt-footer-glass,
+  html body .nt-footer-cta,
+  html body .nt-footer-in,
+  html body .nf-card { width: min(var(--nt-col), calc(100% - var(--nt-gutter) * 2)); }
+  html body .nt-footer { padding-inline: 0; }
+
+  /* ---- main banner (guests and signed-in users) ---- */
+  html[data-theme] .nt-hero,
+  html[data-theme] .nt-hero.is-guest {
+    min-height: 0;
+    padding: clamp(24px, 3vw, 40px) clamp(26px, 3.4vw, 48px);
+    border-radius: 28px;
+    gap: 20px;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, .75fr);
+  }
+  .nt-hero h1 { font-size: clamp(1.9rem, 3.4vw, 2.8rem); margin: 8px 0 4px; }
+  .nt-hero p { font-size: .98rem; line-height: 1.5; max-width: 520px; }
+  .nt-hero-actions { margin-top: 10px; gap: 10px; }
+  .nt-hero-actions .nt-ss { max-width: 560px; }
+  .nt-hero .nt-eyebrow { font-size: .68rem; padding: 4px 11px; }
+  html[data-theme] .nt-hero .nt-stats { margin-top: 14px; gap: 10px; }
+  html[data-theme] .nt-hero .nt-stats li { padding: 7px 14px 7px 16px; border-radius: 14px; }
+  html[data-theme] .nt-hero .nt-stats b { font-size: 1.3rem; }
+  .nt-float-panel { width: min(100%, 300px); padding: 12px 12px 14px; border-radius: 22px; }
+
+  /* "little stuff" removed from the hero: duplicate wordmark, tick chips, empty footer bar */
+  .nt-hero .nt-ab-hero,
+  .nt-hero-trust,
+  .nt-float-foot { display: none; }
+
+  /* ---- other banners: guest showcase, cart hero, admin hero, CTA strip ---- */
+  html[data-theme] .nt-show { padding: clamp(20px, 3vw, 36px); gap: 20px; border-radius: 28px; }
+  html[data-theme] .nt-show-top h2 { font-size: clamp(1.5rem, 2.8vw, 2.1rem); }
+  .nt-show-top p { font-size: .94rem; }
+  html[data-theme] .nt-show-cta { padding: 18px 26px; border-radius: 22px; }
+  .nc-hero { padding-block: 16px; }
+  .adm-hero { padding: clamp(18px, 2.4vw, 26px); }
+  .adm-hero h1, .adm-hero h2 { font-size: clamp(1.4rem, 2.4vw, 1.9rem); }
+  .nt-footer-cta { padding: 16px 22px; }
+
+  /* admin: slimmer sidebar so the panel fits the narrower column */
+  .adm { grid-template-columns: 220px minmax(0, 1fr); gap: 20px; }
+
+  /* cart (page itself never scrolls): keep the side summary compact */
+  .nc { grid-template-columns: minmax(0, 1fr) minmax(300px, 340px); gap: 16px; }
+}
+
+/* very large monitors: slightly wider, still clearly centred */
+@media (min-width: 1700px) { :root { --nt-col: 1240px; --nt-gutter: 48px; } }

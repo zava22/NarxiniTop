@@ -1,0 +1,152 @@
+/* ==========================================================================
+   PHONE LAYER v2 — loaded after mobile.css. Everything here is inside a
+   max-width media query (phones), except the compact desktop footer which is
+   inside min-width: 861px. Laptop/desktop pages are otherwise untouched.
+   ========================================================================== */
+
+/* ---------------------------------------------------------------- desktop: smaller footer */
+@media (min-width: 861px) {
+  html .nf { padding: 30px 16px 12px; }
+  html .nf-card { border-radius: 28px; }
+  html .nf-cta { padding: 16px clamp(20px, 3vw, 32px); }
+  html .nf-cta h3 { font-size: clamp(1.02rem, 1.7vw, 1.2rem); }
+  html .nf-cta p { font-size: .84rem; margin-top: 3px; }
+  html .nf-main { gap: 20px clamp(18px, 2.4vw, 32px); padding: 22px clamp(20px, 3vw, 32px) 4px; }
+  html .nf-brand p { margin: 8px 0 12px; font-size: .86rem; line-height: 1.5; }
+  html .nf-stat { min-width: 84px; padding: 7px 12px; border-radius: 13px; }
+  html .nf-stat b { font-size: 1.15rem; }
+  html .nf-stat span { font-size: .72rem; }
+  html .nf-col h4 { margin-bottom: 8px; font-size: .9rem; }
+  html .nf-col ul a { padding: 3px 0; font-size: .86rem; }
+  html .nf-pills { gap: 6px; }
+  html .nf-pills a { padding: 5px 11px; font-size: .82rem; }
+  html .nf-mega { height: clamp(40px, 6vw, 78px); margin-top: 0; }
+  html .nf-bar { padding: 10px clamp(20px, 3vw, 32px); font-size: .8rem; }
+  html .nf-top { padding: 6px 13px; font-size: .8rem; }
+}
+
+/* ---------------------------------------------------------------- phones */
+@media (max-width: 640px) {
+
+  /* ===== home banner: smaller box, smaller text, less info ===== */
+  html[data-theme] .nt-hero,
+  html[data-theme] .nt-hero.is-guest { padding: 16px 15px 18px; border-radius: 22px; gap: 8px; min-height: 0; margin-bottom: 8px; }
+  html .nt-hero .nt-ab-hero,
+  html .nt-hero-trust,
+  html .nt-hero-float,
+  html .nt-ss-examples .nt-chip:nth-child(n+3) { display: none; }
+  html .nt-hero .nt-eyebrow { font-size: .6rem; padding: 4px 10px; letter-spacing: .05em; }
+  html .nt-hero h1 { font-size: clamp(1.4rem, 6.6vw, 1.75rem); line-height: 1.1; letter-spacing: -.035em; margin: 8px 0 2px; }
+  html .nt-hero p { font-size: .8rem; line-height: 1.45; max-width: none; }
+  html .nt-hero-actions { margin-top: 6px; gap: 8px; }
+  html .nt-hero-actions .nt-btn-lg { min-height: 42px; padding: 9px 16px; font-size: .88rem; }
+  html .nt-ss form { padding: 4px 4px 4px 12px; gap: 6px; border-radius: 16px; }
+  html .nt-ss .nt-ss-icon { display: none; }
+  html .nt-ss input { font-size: 16px; }
+  html .nt-ss-go { min-height: 38px; padding: 7px 13px; font-size: .84rem; }
+  html .nt-ss-examples { gap: 6px; margin-top: 8px; }
+  html .nt-ss-examples .nt-chip { padding: 4px 10px; font-size: .68rem; }
+  html[data-theme] .nt-hero .nt-stats { margin-top: 10px; gap: 6px; flex-wrap: nowrap; }
+  html[data-theme] .nt-hero .nt-stats li { flex: 1 1 0; min-width: 0; padding: 6px 8px 6px 12px; border-radius: 12px; }
+  html[data-theme] .nt-hero .nt-stats li::before { left: 5px; }
+  html[data-theme] .nt-hero .nt-stats b { font-size: 1.02rem; }
+  html[data-theme] .nt-hero .nt-stats span { font-size: .58rem; line-height: 1.2; }
+  html[data-theme] .nt-hero .nt-stats li:nth-child(n+4) { display: none; }
+  html[data-theme] .nt-show { padding: 18px 15px; gap: 14px; border-radius: 22px; }
+  html[data-theme] .nt-show-top h2 { font-size: 1.35rem; }
+  html .nt-show-top p { font-size: .84rem; }
+
+  /* ===== product grid: always two cards per row ===== */
+  html .nt-grid,
+  html .nt-grid[data-density],
+  html .nt-grid[data-density="list"],
+  html .nt-grid[data-density="comfortable"],
+  html .nt-grid[data-density="compact"] { grid-template-columns: repeat(2, minmax(0, 1fr)); --gap: 10px; gap: 10px; }
+
+  /* list view is a desktop idea: on phones it falls back to the same two-column card */
+  html .nt-grid[data-density="list"] .pc { display: flex; flex-direction: column; padding: 8px 8px 10px; border-radius: 20px; }
+  html .nt-grid[data-density="list"] .pc-link { display: flex; }
+  html .nt-grid[data-density="list"] .pc-img { aspect-ratio: 1 / 1; align-self: auto; }
+  html .nt-grid[data-density="list"] .pc-title { margin: 0 4px; align-self: auto; }
+  html .nt-grid[data-density="list"] .pc-foot { padding: 0; }
+
+  /* ===== card: photo, name, "see prices", add-to-cart. Prices live on the product page ===== */
+  html .pc { gap: 8px; padding: 8px 8px 10px; border-radius: 20px; }
+  html .pc-link { gap: 8px; }
+  html .pc-img { aspect-ratio: 1 / 1; border-radius: 15px; }
+  html .pc-img img { width: 80%; height: 80%; }
+  html .pc-title { font-size: .86rem; line-height: 1.25; min-height: 2.5em; margin: 0 3px; }
+  html .pc-meta,
+  html .pc-offers,
+  html .pc-note { display: none; }
+  html .pc-see { display: flex; align-items: center; justify-content: center; gap: 6px; margin: 0 2px; padding: 8px 10px; border-radius: 12px; font-size: .74rem; font-weight: 700; color: var(--accent); background: rgba(var(--accent-rgb), .1); border: 1px dashed rgba(var(--accent-rgb), .45); transition: background .2s; }
+  html .pc-link:active .pc-see { background: rgba(var(--accent-rgb), .2); }
+  html .pc-badges { top: 13px; left: 13px; }
+  html .pc-heart { top: 12px; right: 12px; width: 30px; height: 30px; }
+  html .pc-foot { padding-top: 0; }
+  html .pc-add, html .pc-step { height: 38px; font-size: .82rem; }
+  html .pc-add { gap: 6px; }
+  html .pc-step { grid-template-columns: 32px minmax(0, 1fr) 32px; }
+  html .pc-step button { width: 32px; height: 32px; }
+
+  /* ===== footer ===== */
+  html .nf { padding: 22px 10px 14px; }
+  html .nf-card { border-radius: 22px; }
+  html .nf-cta { padding: 16px 16px 18px; gap: 12px; }
+  html .nf-cta h3 { font-size: 1.05rem; }
+  html .nf-cta p { font-size: .8rem; }
+  html .nf-actions { width: 100%; gap: 8px; }
+  html .nf-actions .nt-btn { flex: 1 1 0; justify-content: center; min-height: 40px; padding: 8px 10px; font-size: .82rem; }
+  html .nf-main { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 14px; padding: 18px 16px 4px; }
+  html .nf-brand { grid-column: 1 / -1; display: grid; gap: 10px; }
+  html .nf-brand p { margin: 0; max-width: none; font-size: .82rem; line-height: 1.5; }
+  /* the numbers: two even tiles */
+  html .nf-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  html .nf-stat { min-width: 0; align-items: center; text-align: center; gap: 0; padding: 10px 8px; border-radius: 16px; background: linear-gradient(160deg, rgba(var(--accent-rgb), .16), rgba(var(--accent-rgb), .05)); border: 1.5px solid var(--card-line); }
+  html .nf-stat b { font-size: 1.5rem; line-height: 1.05; background: linear-gradient(100deg, var(--accent-strong), var(--pink)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  html[data-theme="dark"] .nf-stat b { background: linear-gradient(100deg, var(--accent-2), var(--pink)); -webkit-background-clip: text; background-clip: text; }
+  html .nf-stat span { font-size: .7rem; }
+  html .nf-col h4 { margin-bottom: 6px; font-size: .86rem; }
+  html .nf-col ul a { padding: 4px 0; font-size: .84rem; }
+  html .nf-col:nth-last-child(-n+2) { grid-column: 1 / -1; }
+  html .nf-pills { gap: 6px; }
+  html .nf-pills a { padding: 5px 11px; font-size: .8rem; }
+  html .nf-col .nf-contact { display: flex; width: 100%; justify-content: center; margin-top: 4px; padding: 11px 16px; font-size: .9rem; }
+  html .nf-mega { height: 44px; margin-top: 0; }
+  html .nf-bar { gap: 8px; padding: 12px 16px; font-size: .74rem; }
+  html .nf-top { padding: 6px 13px; font-size: .78rem; }
+
+  /* ===== about page ===== */
+  html .ab { gap: 26px; }
+  html .ab-hero { padding: 20px 16px 18px; border-radius: 24px; gap: 14px; }
+  html .ab-hero h1 { font-size: clamp(1.55rem, 7.4vw, 1.95rem); margin: 8px 0 4px; }
+  html .ab-hero p { font-size: .84rem; line-height: 1.5; }
+  html .ab-hero-btns { gap: 8px; margin-top: 10px; }
+  html .ab-hero-btns .nt-btn { min-height: 42px; font-size: .86rem; }
+  html .ab-stats { gap: 8px; }
+  html .ab-stats li { padding: 11px 13px; border-radius: 15px; }
+  html .ab-stats b { font-size: 1.25rem; }
+  html .ab-stats span { font-size: .68rem; }
+  html .ab-sec { gap: 16px; }
+  html .ab-head h2 { font-size: 1.35rem; }
+  html .ab-head p { font-size: .84rem; }
+  html .ab-cards, html .ab-cards-3, html .ab-steps { grid-template-columns: 1fr; gap: 10px; }
+  html .ab-card, html .ab-step { display: grid; grid-template-columns: 44px minmax(0, 1fr); column-gap: 14px; row-gap: 2px; padding: 16px 16px 18px; border-radius: 20px; }
+  html .ab-card .ab-ico, html .ab-step .ab-step-ico { grid-row: 1 / span 2; width: 44px; height: 44px; border-radius: 14px; }
+  html .ab-card h3, html .ab-step h3 { margin: 2px 0 0; font-size: .98rem; }
+  html .ab-card p, html .ab-step p { font-size: .84rem; line-height: 1.5; }
+  html .ab-num { top: 10px; right: 14px; font-size: 1.8rem; }
+  html .ab-mission { padding: 24px 18px; border-radius: 24px; }
+  html .ab-mission h2 { font-size: 1.2rem; }
+  html .ab-mission p { font-size: .84rem; }
+  html .ab-stores { padding: 16px; border-radius: 20px; gap: 12px; }
+  html .ab-stores h2 { font-size: 1.05rem; }
+  html .ab-stores a { padding: 7px 13px; font-size: .84rem; }
+  html .ab-cta { padding: 20px 18px; border-radius: 24px; gap: 14px; }
+  html .ab-cta h2 { font-size: 1.15rem; }
+  html .ab-cta p { font-size: .84rem; }
+}
+
+/* the "see prices" hint only exists for phones */
+.pc-see { display: none; }
+@media (max-width: 640px) { html .pc-see { display: flex; } }

@@ -1,0 +1,117 @@
+/* ==========================================================================
+   CART PAGE (.nc-*) + CHEAPEST-PLAN POPUP (.cm-*) + FOOTER (.nf-*)
+   Loaded after design.css, tokens only. The cart fits one screen: the page never
+   scrolls, the product list (.nc-body) and the summary (.nc-side) scroll inside their panels.
+   ========================================================================== */
+
+/* ---------- cart: one-screen layout ---------- */
+.nc-sr { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+html.nt-lock, html.nt-lock body { overflow: hidden; height: 100%; overscroll-behavior: none; }
+.nt-shell.is-fixed { height: 100dvh; display: flex; flex-direction: column; overflow: hidden; }
+.nt-main.is-fixed { flex: 1; min-height: 0; display: flex; flex-direction: column; padding: 14px 20px 18px; }
+
+/* ---------- cheapest-plan popup ---------- */
+.cm-bg { padding: 18px; }
+.cm { width: min(1040px, 100%); max-height: min(88dvh, 820px); display: flex; flex-direction: column; border-radius: 28px; overflow: hidden; background: var(--glass-bg-strong); border: 1px solid var(--glass-border); box-shadow: var(--shadow-md); }
+.cm-head { flex: none; display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding: 20px 24px 14px; border-bottom: 1px solid var(--glass-edge); }
+.cm-head h3 { margin: 0; font-family: var(--font-display); font-size: clamp(1.05rem, 2vw, 1.3rem); letter-spacing: -.03em; }
+.cm-head p { margin: 4px 0 0; color: var(--muted); font-size: .9rem; }
+.cm-x { flex: none; width: 38px; height: 38px; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--glass-edge); background: rgba(var(--surface-rgb), .7); color: var(--text); cursor: pointer; transition: color .2s, border-color .2s, transform .15s; }
+.cm-x:hover { color: var(--accent); border-color: var(--accent); transform: rotate(90deg); }
+
+.cm-cols { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; align-items: stretch; padding: 16px 20px; scrollbar-width: thin; scrollbar-color: rgba(var(--accent-rgb), .4) transparent; }
+.cm-col { display: flex; flex-direction: column; min-width: 0; border-radius: 22px; overflow: hidden; background: rgba(var(--surface-rgb), .6); border: 1px solid rgba(var(--accent-rgb), .16); }
+.cm-col-head { display: grid; gap: 4px; padding: 14px 16px; background: linear-gradient(135deg, rgba(var(--accent-rgb), .18), rgba(var(--accent-rgb), .05)); border-bottom: 1px solid var(--glass-edge); }
+.cm-store { display: flex; align-items: center; gap: 8px; font-family: var(--font-display); font-weight: 800; font-size: 1.05rem; letter-spacing: .02em; text-transform: uppercase; color: var(--text); }
+.cm-store svg { color: var(--accent); flex: none; }
+.cm-sub { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.cm-sub small { color: var(--muted); font-size: .8rem; }
+.cm-sub b { font-family: var(--font-display); font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
+.cm-list { list-style: none; margin: 0; padding: 8px; display: grid; gap: 6px; align-content: start; }
+.cm-item { display: grid; grid-template-columns: 44px minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 6px 8px; border-radius: 14px; background: rgba(var(--surface-rgb), .55); }
+.cm-thumb { width: 44px; height: 44px; display: grid; place-items: center; overflow: hidden; border-radius: 12px; background: var(--plate); box-shadow: inset 0 0 0 1px var(--plate-ring); }
+.cm-thumb img { width: 88%; height: 88%; object-fit: contain; mix-blend-mode: multiply; }
+html[data-theme="dark"] .cm-thumb img { mix-blend-mode: normal; -webkit-mask-image: radial-gradient(closest-side, #000 60%, transparent 100%); mask-image: radial-gradient(closest-side, #000 60%, transparent 100%); }
+.cm-name { display: grid; gap: 1px; min-width: 0; }
+.cm-name b { font-size: .88rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cm-name small { color: var(--muted); font-size: .74rem; font-variant-numeric: tabular-nums; }
+.cm-cost { font-weight: 700; font-size: .86rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.cm-col-foot { margin-top: auto; padding: 10px 12px 12px; border-top: 1px dashed var(--border); }
+.cm-missing { flex: none; margin: 0 20px 4px; display: flex; align-items: center; gap: 8px; padding: 9px 14px; border-radius: 14px; background: rgba(var(--accent-rgb), .08); border: 1px solid rgba(var(--accent-rgb), .3); color: var(--warning); font-size: .86rem; }
+.cm-foot { flex: none; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px; padding: 14px 24px; border-top: 1px solid var(--glass-edge); background: rgba(var(--accent-rgb), .06); }
+.cm-total { display: flex; align-items: baseline; gap: 12px; }
+.cm-total span { color: var(--muted); font-weight: 600; }
+.cm-total b { font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; letter-spacing: -.04em; font-variant-numeric: tabular-nums; }
+.cm-save { margin: 0; display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 999px; background: var(--green-tint); color: var(--price-best); font-size: .84rem; font-weight: 600; }
+.cm-save b { font-variant-numeric: tabular-nums; }
+.cm-note { margin: 0 0 0 auto; color: var(--muted); font-size: .78rem; }
+@media (max-width: 640px) {
+  .cm-bg { padding: 10px; }
+  .cm { max-height: 92dvh; border-radius: 22px; }
+  .cm-head { padding: 16px 16px 12px; }
+  .cm-cols { padding: 12px; grid-template-columns: 1fr; }
+  .cm-foot { padding: 12px 16px; }
+  .cm-note { margin-left: 0; }
+}
+
+/* ---------- footer ---------- */
+.nf { padding: 56px 16px 20px; }
+.nf-card { position: relative; width: min(1240px, 100%); margin: 0 auto; border-radius: 34px; overflow: hidden; isolation: isolate; }
+@media (min-width: 1500px) { .nf-card { width: min(1400px, 100%); } }
+.nf-edge { position: absolute; inset: 0 0 auto; height: 3px; background: linear-gradient(90deg, var(--accent-strong), var(--accent-2) 32%, var(--pink) 62%, var(--accent-2)); z-index: 1; }
+.nf-cta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 28px; padding: 28px clamp(20px, 4vw, 44px); background: linear-gradient(120deg, rgba(var(--accent-rgb), .16), rgba(var(--pink-rgb), .07)); border-bottom: 1px solid var(--glass-edge); }
+.nf-cta h3 { margin: 0; font-size: clamp(1.15rem, 2.2vw, 1.5rem); letter-spacing: -.035em; }
+.nf-cta p { margin: 5px 0 0; max-width: 52ch; color: var(--muted); font-size: .92rem; }
+.nf-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+
+.nf-main { display: grid; grid-template-columns: minmax(230px, 1.5fr) repeat(3, minmax(0, 1fr)) minmax(0, 1.15fr); gap: 32px clamp(20px, 3vw, 44px); padding: clamp(28px, 4vw, 46px) clamp(20px, 4vw, 44px) 8px; }
+.nf-brand p { max-width: 34ch; margin: 14px 0 18px; color: var(--muted); font-size: .94rem; line-height: 1.55; }
+.nf-stats { display: flex; flex-wrap: wrap; gap: 10px; }
+.nf-stat { display: grid; gap: 1px; min-width: 100px; padding: 10px 16px; border-radius: 16px; background: rgba(var(--accent-rgb), .09); border: 1px solid var(--glass-border); }
+.nf-stat b { font-family: var(--font-display); font-size: 1.45rem; line-height: 1.1; letter-spacing: -.04em; }
+.nf-stat span { font-size: .78rem; color: var(--muted); }
+
+.nf-col h4 { margin: 0 0 12px; font-family: var(--font-display); font-size: .98rem; letter-spacing: -.015em; color: var(--text); }
+.nf-col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 1px; }
+.nf-col ul a { display: inline-flex; padding: 5px 0; color: var(--muted); text-decoration: none; font-size: .93rem; transition: color .2s, transform .2s; }
+.nf-col ul a:hover { color: var(--accent); transform: translateX(3px); }
+.nf-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.nf-pills a, .nf-mail { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 999px; border: 1px solid var(--border); background: rgba(var(--surface-rgb), .55); color: var(--text); text-decoration: none; font-size: .9rem; font-weight: 600; transition: border-color .2s, color .2s, background .2s, transform .2s; }
+.nf-pills a:hover, .nf-mail:hover { border-color: var(--accent); color: var(--accent); background: rgba(var(--accent-rgb), .1); transform: translateY(-1px); }
+.nf-mail { font-weight: 500; }
+
+.nf-mega { height: clamp(64px, 12vw, 150px); margin-top: 6px; padding: 0 12px; overflow: hidden; user-select: none; -webkit-mask-image: linear-gradient(#000 25%, transparent 100%); mask-image: linear-gradient(#000 25%, transparent 100%); }
+.nf-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 16px; padding: 14px clamp(20px, 4vw, 44px); background: rgba(var(--accent-rgb), .07); border-top: 1px solid var(--glass-edge); color: var(--muted); font-size: .86rem; }
+.nf-bar p { margin: 0; }
+.nf-top { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 999px; border: 1px solid var(--glass-border); background: var(--glass-bg-strong); color: var(--text); font-size: .86rem; font-weight: 600; cursor: pointer; transition: transform .2s, color .2s, border-color .2s; }
+.nf-top:hover { color: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
+
+@media (max-width: 1000px) {
+  .nf-main { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .nf-brand { grid-column: 1 / -1; }
+}
+@media (max-width: 620px) {
+  .nf { padding-top: 36px; }
+  .nf-card { border-radius: 26px; }
+  .nf-main { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cm-x, .nf-pills a, .nf-top, .nf-col ul a { transition: none; }
+}
+
+/* ==========================================================================
+   FIXES: popup scroll + cart fits one screen (footer untouched, sits below the fold)
+   ========================================================================== */
+
+/* popup: grid rows used to shrink to the dialog height and clip the columns.
+   Now rows size to their content; on wide screens every store column scrolls on its own */
+.cm-cols { grid-auto-rows: max-content; align-content: start; }
+.cm-cols, .cm-list { scrollbar-width: thin; scrollbar-color: rgba(var(--accent-rgb), .45) transparent; }
+.cm-cols::-webkit-scrollbar, .cm-list::-webkit-scrollbar { width: 8px; }
+.cm-cols::-webkit-scrollbar-thumb, .cm-list::-webkit-scrollbar-thumb { background: rgba(var(--accent-rgb), .4); border-radius: 8px; }
+@media (min-width: 861px) {
+  .cm-cols { overflow: hidden; grid-auto-flow: column; grid-auto-columns: minmax(250px, 1fr); grid-template-columns: none; grid-template-rows: minmax(0, 1fr); grid-auto-rows: minmax(0, 1fr); overflow-x: auto; }
+  .cm-col { min-height: 0; }
+  .cm-list { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; align-content: start; }
+  .cm-col-head, .cm-col-foot { flex: none; }
+}

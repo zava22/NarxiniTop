@@ -1,0 +1,115 @@
+.locked {
+  position: relative;
+  max-width: 620px;
+  margin: 30px auto;
+  padding: 44px 32px;
+  text-align: center;
+  border-radius: 28px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: 0 24px 60px rgba(var(--ink-rgb), 0.14);
+  overflow: hidden;
+}
+
+.locked::before {
+  content: "";
+  position: absolute;
+  inset: -40% -20% auto -20%;
+  height: 70%;
+  background: radial-gradient(circle, rgba(var(--accent-rgb), 0.16), transparent 65%);
+  animation: locked-glow 6s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes locked-glow {
+  to { transform: translateX(14%) scale(1.15); }
+}
+
+.locked-icon {
+  position: relative;
+  width: 78px;
+  height: 78px;
+  margin: 0 auto 20px;
+  display: grid;
+  place-items: center;
+  border-radius: 24px;
+  background: linear-gradient(135deg, var(--accent-strong), var(--accent));
+  color: var(--on-accent);
+  box-shadow: 0 14px 30px rgba(var(--accent-rgb), 0.35);
+  animation: locked-float 3.2s ease-in-out infinite;
+}
+
+.locked-icon svg { width: 38px; height: 38px; }
+
+@keyframes locked-float {
+  50% { transform: translateY(-8px) rotate(-3deg); }
+}
+
+.locked-title {
+  position: relative;
+  margin: 0 0 10px;
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.locked-text {
+  position: relative;
+  margin: 0 auto 18px;
+  max-width: 460px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.locked-perks {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 18px;
+  margin: 0 0 26px;
+  padding: 0;
+  list-style: none;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.locked-actions {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.locked-primary,
+.locked-secondary {
+  padding: 14px 26px;
+  border-radius: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.locked-primary {
+  background: linear-gradient(135deg, var(--accent-strong), var(--accent-strong));
+  color: var(--on-accent);
+  box-shadow: 0 12px 26px rgba(var(--accent-rgb), 0.32);
+}
+
+.locked-secondary {
+  background: var(--surface-2);
+  color: var(--accent-strong);
+}
+
+.locked-primary:hover,
+.locked-secondary:hover {
+  transform: translateY(-3px);
+}
+
+.locked-compact { margin: 10px auto; padding: 32px 24px; }
+
+@media (max-width: 600px) {
+  .locked { padding: 34px 20px; margin: 20px 14px; }
+  .locked-title { font-size: 22px; }
+}

@@ -1,0 +1,107 @@
+/* ==========================================================================
+   MOBILE LAYER — phones and small tablets only (max-width media queries).
+   Loaded LAST in main.jsx, so it wins over the older mobile rules in the other
+   CSS files. Nothing here applies above 860px: laptop/desktop styles are untouched.
+   ========================================================================== */
+
+@media (max-width: 860px) {
+  /* ---- safety net: never scroll sideways ---- */
+  html, body { overflow-x: clip; max-width: 100%; -webkit-tap-highlight-color: transparent; }
+  html { scroll-padding-top: 16px; }
+  img, svg, video, canvas { max-width: 100%; }
+  .nt-main > *, .nt-acc-grid > *, .nt-detail > *, .nt-cart > *, .ct-grid > *, .nt-auth > * { min-width: 0; }
+  input, select, textarea { font-size: 16px; } /* stops iOS zooming in on focus */
+  .nt-btn, .nt-icon-btn, .nt-chip, button, summary { touch-action: manipulation; }
+
+  /* ---- navbar: everything must fit, burger always reachable ---- */
+  .nt-nav-in { padding: 8px 10px; gap: 6px; }
+  .nt-nav .nt-logo { flex: 0 1 auto; min-width: 0; }
+  .nt-nav-actions { flex: none; gap: 6px; margin-left: auto; }
+  .nt-nav-actions .nt-icon-btn { width: 38px; height: 38px; flex: none; }
+  .nt-user { flex: none; }
+  .nt-user-btn { flex: none; padding: 3px; }
+  .nt-nav-login { flex: none; padding: 7px 13px; font-size: .86rem; }
+  .nt-nav-reg { display: none; }
+  .nt-nav-links { max-height: calc(100dvh - 96px); overflow-y: auto; }
+  .nt-nav-links a { min-height: 46px; }
+  .nt-nav-extra { display: grid; gap: 4px; margin-top: 6px; padding-top: 8px; border-top: 1px solid var(--border); }
+  .nt-nav-extra a { display: flex; align-items: center; gap: 8px; padding: 12px 14px; border-radius: 999px; color: var(--muted); font-weight: 600; }
+  .nt-nav-extra a.is-active { color: var(--accent); background: rgba(var(--accent-rgb), .13); }
+  .nt-nav-lang { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 6px 14px 4px; color: var(--muted); font-weight: 600; }
+
+  /* ---- page ---- */
+  .nt-main { padding: 14px 12px 44px; }
+  .nt-h1 { font-size: 1.55rem; }
+  .nt-section { margin: 30px 0; }
+  .nt-totop { right: 14px; bottom: 14px; width: 42px; height: 42px; }
+
+  /* ---- home hero ---- */
+  .nt-hero { border-radius: 24px; padding: 22px 18px; }
+  .nt-hero h1 { font-size: clamp(1.9rem, 9vw, 2.6rem); }
+  .nt-grad .nt-word { filter: none !important; } /* blur(0px) left by the animation hides gradient text */
+  .nt-hero-actions { gap: 10px; }
+  .nt-hero-actions > .nt-btn, .nt-hero-actions > a { flex: 1 1 100%; justify-content: center; }
+  .nt-hero-trust { gap: 8px; }
+
+  /* ---- product grid and cards ---- */
+  .nt-grid, .nt-grid[data-density="compact"] { --card-min: 150px; --gap: 10px; }
+  html[data-theme] .nt-card { border-radius: 18px; }
+  html[data-theme] .nt-card .nt-card-foot { flex-direction: column; align-items: stretch; gap: 8px; margin: 6px 10px 0; padding: 8px 0 10px; }
+  html[data-theme] .nt-card-foot > * { width: 100%; }
+  html[data-theme] .nt-avail { font-size: .72rem; white-space: normal; }
+  html[data-theme] .nt-add { width: 100%; justify-content: center; min-height: 42px; padding: 9px 10px; font-size: .86rem; white-space: nowrap; }
+  html[data-theme] .nt-grid[data-density="list"] .nt-card .nt-card-foot { flex-direction: row; align-items: center; }
+  html[data-theme] .nt-grid[data-density="list"] .nt-card-foot > * { width: auto; }
+  .nt-toolbar-glass { top: 70px; }
+
+  /* ---- stores ---- */
+  .nt-branch-search { width: 100%; padding: 12px 14px; border-radius: 12px; border: 1.5px solid var(--border); background: var(--surface); color: var(--text); }
+  .nt-loc-manual input { min-width: 0; width: 100%; }
+
+  /* ---- account ---- */
+  .nt-acc-nav { scrollbar-width: none; -webkit-overflow-scrolling: touch; max-width: 100%; }
+  .nt-acc-nav::-webkit-scrollbar { display: none; }
+  .nt-two { grid-template-columns: 1fr; }
+
+  /* ---- footer ---- */
+  .nf { padding: 28px 10px 16px; }
+  .nf-card { border-radius: 24px; }
+  .nf-cta { padding: 20px 18px; }
+  .nf-actions { width: 100%; }
+  .nf-main { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 16px; padding: 22px 18px 6px; }
+  .nf-brand, .nf-col:nth-last-child(-n+2) { grid-column: 1 / -1; }
+  .nf-col .nf-mail, .nf-col .nf-contact { display: flex; width: 100%; justify-content: center; padding: 12px 16px; font-size: .95rem; }
+  .nf-bar { flex-direction: column; align-items: center; text-align: center; padding: 14px 18px; }
+
+  /* ---- contact page ---- */
+  .ct { gap: 14px; }
+  .ct-hero { border-radius: 24px; padding: 22px 18px; }
+  .ct-hero h1 { font-size: clamp(1.7rem, 8vw, 2.2rem); }
+  .ct-hero p { font-size: .98rem; }
+  .ct-grid { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .ct-side { position: static; }
+  .ct-form { padding: 18px 14px; border-radius: 24px; }
+  .ct-form h2 { font-size: 1.3rem; }
+  .ct-box textarea { min-height: 220px; padding: 14px; }
+  .ct-submit { flex-direction: column-reverse; align-items: stretch; gap: 12px; }
+  .ct-send { width: 100%; min-height: 50px; }
+  .ct-when ul { grid-template-columns: 1fr; gap: 10px; }
+  .ct-when li { display: grid; grid-template-columns: 46px minmax(0, 1fr); column-gap: 14px; padding: 16px; }
+  .ct-when .ct-ico { grid-row: 1 / span 2; margin: 0; }
+  .ct-faq-list { padding: 2px 16px; }
+  .ct-done-actions .nt-btn { flex: 1 1 100%; }
+}
+
+@media (max-width: 560px) {
+  .nt-locchip { display: none; } /* "Stores" is in the menu */
+}
+
+@media (max-width: 420px) {
+  .nt-nav-in { padding: 7px 8px; gap: 4px; }
+  .nt-nav-actions { gap: 4px; }
+  .nt-nav-actions .nt-icon-btn { width: 36px; height: 36px; }
+  .nt-ab-nav { font-size: 1.2rem; }
+  .nt-nav .nt-mark { width: 30px; height: 30px; }
+  .nt-main { padding-left: 10px; padding-right: 10px; }
+  .ct-form { padding: 16px 12px; }
+}

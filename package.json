@@ -1,0 +1,44 @@
+{
+  "name": "narxi-top",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "server": "node server/index.js",
+    "test": "node --test shared/core/__tests__/core.test.js shared/core/__tests__/adapters.test.js shared/core/__tests__/auth.test.js shared/core/__tests__/ingest.test.js server/__tests__/contact.test.js server/__tests__/admin.test.js server/__tests__/adminRoutes.test.js",
+    "seed": "node scripts/seed-products.mjs",
+    "check:i18n": "node scripts/check-i18n.mjs",
+    "check:branches": "node scripts/check-branches.mjs",
+    "import:havas": "node scripts/import-havas-branches.mjs",
+    "geocode:branches": "node scripts/enrich-branch-coordinates.mjs"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.117.2",
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.5",
+    "express": "^5.2.1",
+    "framer-motion": "^12.23.0",
+    "leaflet": "^1.9.4",
+    "mongodb": "^7.7.0",
+    "nodemailer": "^10.1.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-router-dom": "^7.18.4",
+    "recharts": "^3.2.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "@vitejs/plugin-react": "^6.1.1",
+    "eslint": "^10.10.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.6",
+    "globals": "^17.12.0",
+    "vite": "^8.3.0"
+  }
+}

@@ -1,6 +1,9 @@
+
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { MongoClient, ServerApiVersion } from "mongodb";
 
 import { registerCatalogRoutes, startIngestScheduler } from "./catalog.js";
@@ -18,16 +21,19 @@ import {
 } from "../shared/translations.js";
 
 dotenv.config({ path: ".env.local" });
-dotenv.config(); // also allow a plain .env
+dotenv.config();
 
 const app = express();
 
 const PORT = process.env.PORT || 5000;
 const MONGODB_URI = process.env.MONGODB_URI;
-const MONGODB_DB_NAME = process.env.MONGODB_DB_NAME || "narxitop";
+const MONGODB_DB_NAME = process.env.MONGODB_DB_NAME || "narxtop";
+
+const SERVER_DIR = path.dirname(fileURLToPath(import.meta.url));
+const DIST_DIR = path.resolve(SERVER_DIR, "../dist");
 
 if (!MONGODB_URI) {
-  console.error("❌ Missing MONGODB_URI in .env.local");
+  console.error("❌ Missing MONGODB_URI in environment variables.");
   process.exit(1);
 }
 
@@ -36,15 +42,21 @@ app.use(
     origin: [
       "http://127.0.0.1:5173",
       "http://localhost:5173",
-      ...(process.env.FRONTEND_URL ? [process.env.FRONTEND_URL] : []),
+      ...(process.env.FRONTEND_URL
+        ? [process.env.FRONTEND_URL]
+        : []),
     ],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization", "x-ingest-token"],
+    allowedHeaders: [
+      "Content-Type",
+      "Authorization",
+      "x-ingest-token",
+    ],
   })
 );
 
-app.use(express.json({ limit: "1mb" })); // profile photos arrive as small base64 JPEGs
+app.use(express.json({ limit: "1mb" }));
 app.use(express.text({ type: "text/plain" }));
 
 const client = new MongoClient(MONGODB_URI, {
@@ -57,18 +69,18 @@ const client = new MongoClient(MONGODB_URI, {
 
 let db;
 
-/* ------------------------------------------------------------------ */
-/* Seed: copy every text from shared/translations.js into MongoDB.     */
-/* Existing keys are overwritten, keys you added by hand are kept.     */
-/* ------------------------------------------------------------------ */
+/* ------------------------ Seed translations ------------------------ */
+
 async function seedTranslations() {
   const collection = db.collection("translations");
 
   for (const lang of LANGUAGES) {
-    const set = { lang, updatedAt: new Date() };
+    const set = {
+      lang,
+      updatedAt: new Date(),
+    };
 
     for (const [key, value] of Object.entries(translations[lang])) {
-      // Mongo field names cannot contain "." — store keys with "|" instead.
       set[`messages.${key.replaceAll(".", "|")}`] = value;
     }
 
@@ -82,20 +94,25 @@ async function seedTranslations() {
   console.log(`✅ Translations seeded (${LANGUAGES.join(", ")})`);
 }
 
-/* ------------------------------ Routes ----------------------------- */
+/* ---------------------------- API routes --------------------------- */
 
 const catalog = registerCatalogRoutes(app, () => db);
+
 registerAccountRoutes(app);
 registerAvatarRoutes(app, () => db);
 registerContactRoutes(app, () => db);
-registerAdminRoutes(app, () => db, { invalidate: catalog.invalidate });
+registerAdminRoutes(app, () => db, {
+  invalidate: catalog.invalidate,
+});
 
 app.get("/api/health", async (req, res) => {
   try {
     if (!db) {
-      return res
-        .status(503)
-        .json({ success: false, message: "Database is not connected.", adminApi: ADMIN_API_VERSION });
+      return res.status(503).json({
+        success: false,
+        message: "Database is not connected.",
+        adminApi: ADMIN_API_VERSION,
+      });
     }
 
     await db.command({ ping: 1 });
@@ -104,27 +121,33 @@ app.get("/api/health", async (req, res) => {
       success: true,
       message: "NarxTop API and MongoDB are connected.",
       database: MONGODB_DB_NAME,
-      adminApi: ADMIN_API_VERSION, // the admin panel compares this to detect a server that was not restarted
+      adminApi: ADMIN_API_VERSION,
     });
   } catch (error) {
     console.error("Health check error:", error);
-    res
-      .status(500)
-      .json({ success: false, message: "MongoDB connection check failed." });
+
+    res.status(500).json({
+      success: false,
+      message: "MongoDB connection check failed.",
+    });
   }
 });
 
 app.get("/api/translations", (req, res) => {
-  res.json({ success: true, languages: LANGUAGES });
+  res.json({
+    success: true,
+    languages: LANGUAGES,
+  });
 });
 
 app.get("/api/translations/:lang", async (req, res) => {
   const { lang } = req.params;
 
   if (!LANGUAGES.includes(lang)) {
-    return res
-      .status(404)
-      .json({ success: false, message: "Unsupported language." });
+    return res.status(404).json({
+      success: false,
+      message: "Unsupported language.",
+    });
   }
 
   try {
@@ -132,25 +155,31 @@ app.get("/api/translations/:lang", async (req, res) => {
       .collection("translations")
       .findOne({ _id: lang });
 
-    // Convert "nav|home" back to "nav.home"
     const messages = {};
-    for (const [key, value] of Object.entries(doc?.messages || {})) {
+
+    for (const [key, value] of Object.entries(
+      doc?.messages || {}
+    )) {
       messages[key.replaceAll("|", ".")] = value;
     }
 
-    res.json({ success: true, lang, messages });
+    res.json({
+      success: true,
+      lang,
+      messages,
+    });
   } catch (error) {
     console.error("Translations error:", error);
-    res
-      .status(500)
-      .json({ success: false, message: "Could not load translations." });
+
+    res.status(500).json({
+      success: false,
+      message: "Could not load translations.",
+    });
   }
 });
 
-/* ------------------------- Fallbacks (JSON) ------------------------ */
+/* ----------------------- Unknown API fallback ---------------------- */
 
-// Unknown /api paths answer with JSON (never Express's HTML page), so the admin panel can tell
-// "this server is older than the panel — restart it" apart from a real "not found".
 app.use("/api", (req, res) => {
   res.status(404).json({
     success: false,
@@ -159,26 +188,60 @@ app.use("/api", (req, res) => {
   });
 });
 
-// Malformed / oversized request bodies and any uncaught route error.
-// eslint-disable-next-line no-unused-vars
-app.use((err, req, res, next) => {
-  if (res.headersSent) return next(err);
-  if (err?.type === "entity.parse.failed") {
-    return res.status(400).json({ success: false, message: "So‘rov formati noto‘g‘ri (JSON)." });
-  }
-  if (err?.type === "entity.too.large") {
-    return res.status(413).json({ success: false, message: "So‘rov juda katta." });
-  }
-  console.error("Unhandled error:", err);
-  res.status(500).json({ success: false, message: "Server error" });
+/* ----------------------- Serve React frontend ---------------------- */
+
+// Vite builds the website into the project's dist directory.
+app.use(express.static(DIST_DIR));
+
+// Return index.html for the homepage and React Router pages.
+// This must remain AFTER the API routes and API fallback.
+app.get(/.*/, (req, res, next) => {
+  res.sendFile(
+    path.join(DIST_DIR, "index.html"),
+    (error) => {
+      if (error) next(error);
+    }
+  );
 });
 
-/* ------------------------------ Start ------------------------------ */
+/* -------------------------- Error handler -------------------------- */
+
+// eslint-disable-next-line no-unused-vars
+app.use((err, req, res, next) => {
+  if (res.headersSent) {
+    return next(err);
+  }
+
+  if (err?.type === "entity.parse.failed") {
+    return res.status(400).json({
+      success: false,
+      message: "So‘rov formati noto‘g‘ri (JSON).",
+    });
+  }
+
+  if (err?.type === "entity.too.large") {
+    return res.status(413).json({
+      success: false,
+      message: "So‘rov juda katta.",
+    });
+  }
+
+  console.error("Unhandled error:", err);
+
+  res.status(500).json({
+    success: false,
+    message: "Server error",
+  });
+});
+
+/* ---------------------------- Start server ------------------------- */
 
 async function startServer() {
   try {
     await client.connect();
+
     db = client.db(MONGODB_DB_NAME);
+
     await db.command({ ping: 1 });
 
     console.log("✅ Connected to MongoDB");
@@ -188,10 +251,14 @@ async function startServer() {
     await ensureIndexes(db);
     await ensureAdminIndexes(db);
     await seedIfEmpty(db);
+
     startIngestScheduler(() => db);
 
     app.listen(PORT, () => {
-      console.log(`✅ API server running on http://localhost:${PORT}`);
+      console.log(
+        `✅ NarxTop website and API server running on port ${PORT}`
+      );
+      console.log(`✅ Frontend build directory: ${DIST_DIR}`);
     });
   } catch (error) {
     console.error("❌ Server startup failed:");
